@@ -1,0 +1,33 @@
+import java.util.ArrayList;
+
+public class PancakeHouseMenu {
+    ArrayList<MenuItem> menuItems;
+
+    public PancakeHouseMenu() {
+        menuItems = new ArrayList<>();
+        addItem("K&B's Pancake Breakfast",
+                "Pancakes with scrambled eggs and toast", true, 2.99);
+        addItem("Regular Pancake Breakfast",
+                "Pancakes with fried eggs and sausage", false, 2.99);
+        addItem("Blueberry Pancakes",
+                "Pancakes made with fresh blueberries and blueberry syrup", true, 3.49);
+        addItem("Waffles",
+                "Waffles with your choice of blueberries or strawberries", true, 3.59);
+    }
+
+    public void addItem(String name, String description,
+                        boolean vegetarian, double price) {
+        menuItems.add(new MenuItem(name, description, vegetarian, price));
+    }
+
+    // Menu prints itself using an ArrayList
+    public void printMenu() {
+        System.out.println("\n=== OBJECTVILLE PANCAKE HOUSE (Breakfast) ===");
+        for (int i = 0; i < menuItems.size(); i++) {
+            MenuItem item = menuItems.get(i);
+            String veg = item.isVegetarian() ? "[V]" : "   ";
+            System.out.printf("  %s %-35s $%.2f%n", veg, item.getName(), item.getPrice());
+            System.out.printf("      %s%n%n", item.getDescription());
+        }
+    }
+}
