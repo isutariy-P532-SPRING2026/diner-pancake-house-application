@@ -29,14 +29,6 @@ public class DinerMenu {
         }
     }
 
-    // Menu prints itself using an Array
-    public void printMenu() {
-        System.out.println("\n=== OBJECTVILLE DINER (Lunch) ===");
-        for (int i = 0; i < numberOfItems; i++) {
-            MenuItem item = menuItems[i];
-            String veg = item.isVegetarian() ? "[V]" : "   ";
-            System.out.printf("  %s %-35s $%.2f%n", veg, item.getName(), item.getPrice());
-            System.out.printf("      %s%n%n", item.getDescription());
-        }
-    }
+    public MenuItem[] getMenuItems()  { return menuItems; }
+    public int getNumberOfItems()     { return numberOfItems; }
 }
