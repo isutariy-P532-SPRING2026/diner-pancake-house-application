@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 public class Waitress {
     DinerMenu dinerMenu;
     PancakeHouseMenu pancakeHouseMenu;
@@ -9,34 +7,41 @@ public class Waitress {
         this.pancakeHouseMenu = pancakeHouseMenu;
     }
 
-    public void printMenu() {
-        // Problem: two different loops because two different types
+    public void printAllMenus() {
         System.out.println("\n=== OBJECTVILLE PANCAKE HOUSE (Breakfast) ===");
-        ArrayList<MenuItem> breakfastItems = pancakeHouseMenu.getMenuItems();
-        for (int i = 0; i < breakfastItems.size(); i++) {
-            printMenuItem(breakfastItems.get(i));
-        }
+        printMenu(pancakeHouseMenu.createIterator());
 
         System.out.println("\n=== OBJECTVILLE DINER (Lunch) ===");
-        MenuItem[] lunchItems = dinerMenu.getMenuItems();
-        for (int i = 0; i < dinerMenu.getNumberOfItems(); i++) {
-            printMenuItem(lunchItems[i]);
-        }
+        printMenu(dinerMenu.createIterator());
+    }
+
+    public void printDinerMenu() {
+        System.out.println("\n=== OBJECTVILLE DINER (Lunch) ===");
+        printMenu(dinerMenu.createIterator());
+    }
+
+    public void printPancakeMenu() {
+        System.out.println("\n=== OBJECTVILLE PANCAKE HOUSE (Breakfast) ===");
+        printMenu(pancakeHouseMenu.createIterator());
     }
 
     public void printVegetarianMenu() {
         System.out.println("\n=== VEGETARIAN ITEMS ===");
+        printVegetarian(pancakeHouseMenu.createIterator());
+        printVegetarian(dinerMenu.createIterator());
+    }
 
-        ArrayList<MenuItem> breakfastItems = pancakeHouseMenu.getMenuItems();
-        for (int i = 0; i < breakfastItems.size(); i++) {
-            if (breakfastItems.get(i).isVegetarian())
-                printMenuItem(breakfastItems.get(i));
+    // ONE loop works for any menu thanks to Iterator
+    private void printMenu(Iterator iterator) {
+        while (iterator.hasNext()) {
+            printMenuItem(iterator.next());
         }
+    }
 
-        MenuItem[] lunchItems = dinerMenu.getMenuItems();
-        for (int i = 0; i < dinerMenu.getNumberOfItems(); i++) {
-            if (lunchItems[i].isVegetarian())
-                printMenuItem(lunchItems[i]);
+    private void printVegetarian(Iterator iterator) {
+        while (iterator.hasNext()) {
+            MenuItem item = iterator.next();
+            if (item.isVegetarian()) printMenuItem(item);
         }
     }
 

@@ -1,27 +1,29 @@
-# Part 2 - Combined Menus via Waitress
+# Part 3 - Iterator Pattern ← MAIN BRANCH
 
 ## What this does
 
-A `Waitress` class now controls both menus and prints them together.
+Applies the Iterator design pattern so the Waitress uses ONE loop
+for both menus, regardless of how they store their items internally.
 
 ## Structure
 
-- `MenuItem.java`        — Holds name, description, vegetarian flag, price
-- `DinerMenu.java`       — Lunch menu stored in an **Array**
-- `PancakeHouseMenu.java`— Breakfast menu stored in an **ArrayList**
-- `Waitress.java`        — Combines both menus and prints them
-- `MenuTestDrive.java`   — Runs the app
+- `MenuItem.java`              — Holds name, description, vegetarian flag, price
+- `Iterator.java`              — Custom Iterator interface (hasNext, next)
+- `DinerMenuIterator.java`     — Iterator for the Array-based Diner menu
+- `PancakeHouseMenuIterator.java` — Iterator for the ArrayList-based Pancake menu
+- `DinerMenu.java`             — Lunch menu, returns a DinerMenuIterator
+- `PancakeHouseMenu.java`      — Breakfast menu, returns a PancakeHouseMenuIterator
+- `Waitress.java`              — Uses Iterator, one loop works for both menus
+- `MenuTestDrive.java`         — Runs the app
 
-## The Problem with this approach
+## What the Iterator Pattern solves
 
-The Waitress still needs TWO separate loops:
+Before (Part 2): Waitress needed two separate loops and knew
+the internal structure of each menu (Array vs ArrayList).
 
-- One loop for the Array (DinerMenu)
-- One loop for the ArrayList (PancakeHouseMenu)
-
-If we added a third restaurant, we'd need a third loop.
-The Waitress is forced to know about the internal structure of each menu.
-This is what Part 3 (Iterator Pattern) fixes.
+After (Part 3): Waitress only talks to the Iterator interface.
+It does not know or care if the menu uses an Array or ArrayList.
+Adding a new restaurant only requires a new Iterator class.
 
 ## How to run
 
