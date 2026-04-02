@@ -24,4 +24,5 @@ This is what Part 2 fixes.
 ## How to run
 
 javac *.java
+
 java MenuTestDrive
