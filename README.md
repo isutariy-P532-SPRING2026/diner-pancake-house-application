@@ -1,25 +1,27 @@
-# Part 1 - Two Separate Menus
+# Part 2 - Combined Menus via Waitress
 
 ## What this does
 
-Two separate restaurant menus that each print themselves independently.
+A `Waitress` class now controls both menus and prints them together.
 
 ## Structure
 
 - `MenuItem.java`        — Holds name, description, vegetarian flag, price
-- `DinerMenu.java`       — Lunch menu, stores items in an **Array**
-- `PancakeHouseMenu.java`— Breakfast menu, stores items in an **ArrayList**
+- `DinerMenu.java`       — Lunch menu stored in an **Array**
+- `PancakeHouseMenu.java`— Breakfast menu stored in an **ArrayList**
+- `Waitress.java`        — Combines both menus and prints them
 - `MenuTestDrive.java`   — Runs the app
 
 ## The Problem with this approach
 
-Each menu prints itself using a different kind of loop:
+The Waitress still needs TWO separate loops:
 
-- DinerMenu uses `for (int i = 0; i < numberOfItems; i++)`
-- PancakeHouseMenu uses `for (int i = 0; i < items.size(); i++)`
+- One loop for the Array (DinerMenu)
+- One loop for the ArrayList (PancakeHouseMenu)
 
-There is no single place that combines or controls both menus.
-This is what Part 2 fixes.
+If we added a third restaurant, we'd need a third loop.
+The Waitress is forced to know about the internal structure of each menu.
+This is what Part 3 (Iterator Pattern) fixes.
 
 ## How to run
 

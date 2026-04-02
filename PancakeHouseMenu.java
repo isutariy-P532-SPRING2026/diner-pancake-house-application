@@ -20,14 +20,5 @@ public class PancakeHouseMenu {
         menuItems.add(new MenuItem(name, description, vegetarian, price));
     }
 
-    // Menu prints itself using an ArrayList
-    public void printMenu() {
-        System.out.println("\n=== OBJECTVILLE PANCAKE HOUSE (Breakfast) ===");
-        for (int i = 0; i < menuItems.size(); i++) {
-            MenuItem item = menuItems.get(i);
-            String veg = item.isVegetarian() ? "[V]" : "   ";
-            System.out.printf("  %s %-35s $%.2f%n", veg, item.getName(), item.getPrice());
-            System.out.printf("      %s%n%n", item.getDescription());
-        }
-    }
+    public ArrayList<MenuItem> getMenuItems() { return menuItems; }
 }
