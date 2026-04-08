@@ -29,4 +29,11 @@ public class MenuItem {
     public boolean isVegetarian() {
         return vegetarian;
     }
+
+    // Overrides MenuComponent.print()
+    public void print() {
+        String veg = isVegetarian() ? "[V]" : "   ";
+        System.out.printf("  %s %-35s $%.2f%n", veg, getName(), getPrice());
+        System.out.printf("      %s%n%n", getDescription());
+    }
 }
