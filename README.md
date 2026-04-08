@@ -76,4 +76,5 @@ Updated files:
 ## How to run
 
   javac *.java
+  
   java MenuTestDrive
