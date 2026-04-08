@@ -1,80 +1,43 @@
-# Part 5 - Alternating Menus with Day Selection
+# Part 6 - Composite Pattern: MenuComponent and MenuItem
 
 ## What this does
 
-All three restaurants alternate their menu items by day of the week.
-On startup the app shows the current date, day, and today's items automatically.
-Users can also browse the menu for any specific day of the week.
+Introduces the first half of the Composite Pattern.
+MenuComponent is the abstract base class for both leaves (MenuItem)
+and composites (Menu - coming in Part 7).
 
-## Alternating Schedule (applies to all 3 restaurants)
+## New / Changed files
 
-  Mon / Wed / Fri / Sun  ->  items at positions 1, 3, 5  (index 0, 2, 4)
-  Tue / Thu / Sat        ->  items at positions 2, 4, 6  (index 1, 3, 5)
+- MenuComponent.java   NEW - abstract base class for the composite pattern
+- MenuItem.java        UPDATED - now extends MenuComponent
 
-## What displays on startup
+## Unchanged files
 
-- Current date and day (e.g. Date: 2026-04-08 | Day: Wednesday)
-- Which schedule is active (Mon/Wed/Fri/Sun or Tue/Thu/Sat)
-- Today's alternating items for all 3 restaurants
-- Date and day banner repeated after the menu
+  Everything else stays exactly the same as Part 5.
+  MenuTestDrive.java is NOT changed.
 
-## Files
+## How Composite Pattern works (so far)
 
-New files:
+  MenuComponent  <-- abstract base (defines all possible operations)
+       |
+  MenuItem       <-- LEAF (overrides getName, getDescription,
+                           getPrice, isVegetarian, print)
+       |
+  Menu           <-- COMPOSITE (coming in Part 7, will override
+                           add, remove, getChild, print)
 
-- DayChecker.java                     Shared day-of-week logic, date label
-- AlternatingDinerMenuIterator.java   Alternating iterator for Array
-- AlternatingPancakeMenuIterator.java Alternating iterator for ArrayList
-- AlternatingCafeMenuIterator.java    Alternating iterator for HashMap
+## Why UnsupportedOperationException?
 
-Updated files:
+MenuComponent provides default implementations that throw
+UnsupportedOperationException. This means:
 
-- DinerMenu.java        Added createAlternatingIterator(int dayOfWeek)
-- PancakeHouseMenu.java Added createAlternatingIterator(int dayOfWeek)
-- CafeMenu.java         Added createAlternatingIterator(int dayOfWeek)
-- Waitress.java         Added printTodaysMenus() and printMenuForDay()
-- MenuTestDrive.java    Date banner, interactive menu with day picker
-
-## Interactive Menu Options
-
-1 - Today's alternating menu (all restaurants)
-2 - Pick any day (Mon-Sun) and see its menu
-3 - Full menu all restaurants
-4 - Full Diner menu
-5 - Full Pancake House menu
-6 - Full Cafe menu
-9 - Vegetarian items only
-0 - Exit
-
-## Sample output on startup
-
-  ==========================================
-
-    Date: 2026-04-08 | Day: Wednesday | Mon/Wed/Fri/Sun schedule - showing items 1, 3, 5
-
-  ==========================================
-
-  === PANCAKE HOUSE - Today's Breakfast ===
-
-    [V] K&B's Pancake Breakfast         $2.99
-    [V] Blueberry Pancakes              $3.49
-
-  === DINER - Today's Lunch ===
-
-    [V] Vegetarian BLT                  $2.99
-        Soup of the Day                 $3.29
-    [V] Steamed Veggies and Brown Rice  $3.99
-
-  === CAFE - Today's Items ===
-
-  ==========================================
-
-    Date: 2026-04-08 | Day: Wednesday | Mon/Wed/Fri/Sun schedule - showing items 1, 3, 5
-
-  ==========================================
+- MenuItem does not need to implement add/remove/getChild
+  (those don't make sense for a single item)
+- Menu (Part 7) will not need to implement getPrice/isVegetarian
+  (those don't make sense for a whole menu)
 
 ## How to run
 
   javac *.java
-  
+
   java MenuTestDrive
