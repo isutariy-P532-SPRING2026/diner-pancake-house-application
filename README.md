@@ -1,29 +1,30 @@
-# Part 3 - Iterator Pattern ← MAIN BRANCH
+# Part 4 - Adding CafeMenu with Iterator Pattern
 
 ## What this does
 
-Applies the Iterator design pattern so the Waitress uses ONE loop
-for both menus, regardless of how they store their items internally.
+A third restaurant (Cafe) is added using a HashMap to store menu items.
+Thanks to the Iterator pattern, the Waitress prints all three menus
+using the exact same loop — no changes needed to the core logic.
 
 ## Structure
 
-- `MenuItem.java`              — Holds name, description, vegetarian flag, price
-- `Iterator.java`              — Custom Iterator interface (hasNext, next)
-- `DinerMenuIterator.java`     — Iterator for the Array-based Diner menu
-- `PancakeHouseMenuIterator.java` — Iterator for the ArrayList-based Pancake menu
-- `DinerMenu.java`             — Lunch menu, returns a DinerMenuIterator
-- `PancakeHouseMenu.java`      — Breakfast menu, returns a PancakeHouseMenuIterator
-- `Waitress.java`              — Uses Iterator, one loop works for both menus
-- `MenuTestDrive.java`         — Runs the app
+- `MenuItem.java`                 — Holds name, description, vegetarian flag, price
+- `Iterator.java`                 — Custom Iterator interface (hasNext, next)
+- `DinerMenuIterator.java`        — Iterator for Array (Diner)
+- `PancakeHouseMenuIterator.java` — Iterator for ArrayList (Pancake House)
+- `CafeMenuIterator.java`         — Iterator for HashMap (Cafe) ← NEW
+- `DinerMenu.java`                — Lunch menu stored in an Array
+- `PancakeHouseMenu.java`         — Breakfast menu stored in an ArrayList
+- `CafeMenu.java`                 — Cafe menu stored in a HashMap ← NEW
+- `Waitress.java`                 — Updated to include CafeMenu
+- `MenuTestDrive.java`            — Interactive console app
 
-## What the Iterator Pattern solves
+## Three different data structures, one loop:
 
-Before (Part 2): Waitress needed two separate loops and knew
-the internal structure of each menu (Array vs ArrayList).
-
-After (Part 3): Waitress only talks to the Iterator interface.
-It does not know or care if the menu uses an Array or ArrayList.
-Adding a new restaurant only requires a new Iterator class.
+  DinerMenu        → Array       → DinerMenuIterator
+  PancakeHouseMenu → ArrayList   → PancakeHouseMenuIterator
+  CafeMenu         → HashMap     → CafeMenuIterator
+  All handled by → printMenu(Iterator iterator)
 
 ## How to run
 

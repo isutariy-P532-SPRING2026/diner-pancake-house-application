@@ -4,7 +4,8 @@ public class MenuTestDrive {
     public static void main(String[] args) {
         DinerMenu dinerMenu = new DinerMenu();
         PancakeHouseMenu pancakeHouseMenu = new PancakeHouseMenu();
-        Waitress waitress = new Waitress(dinerMenu, pancakeHouseMenu);
+        CafeMenu cafeMenu = new CafeMenu();
+        Waitress waitress = new Waitress(dinerMenu, pancakeHouseMenu, cafeMenu);
 
         System.out.println("Welcome to Objectville!  [V] = Vegetarian");
         waitress.printAllMenus();
@@ -18,8 +19,8 @@ public class MenuTestDrive {
             System.out.println("  2. View VEGETARIAN items only");
             System.out.println("  3. View DINER menu only");
             System.out.println("  4. View PANCAKE HOUSE menu only");
-            System.out.println("  5. Exit");
-            System.out.println("----------------------------------\n");
+            System.out.println("  5. View CAFE menu only");
+            System.out.println("  6. Exit");
             System.out.print("  Enter choice: ");
 
             String input = scanner.nextLine().trim();
@@ -38,11 +39,14 @@ public class MenuTestDrive {
                     waitress.printPancakeMenu();
                     break;
                 case "5":
-                    System.out.println("\nGoodbye!");
+                    waitress.printCafeMenu();
+                    break;
+                case "6":
+                    System.out.println("  Goodbye!");
                     running = false;
                     break;
                 default:
-                    System.out.println("  Invalid choice. Please enter 1-5.");
+                    System.out.println("  Invalid choice. Please enter 1-6.");
             }
         }
         scanner.close();

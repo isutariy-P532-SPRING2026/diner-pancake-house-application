@@ -1,10 +1,12 @@
 public class Waitress {
     DinerMenu dinerMenu;
     PancakeHouseMenu pancakeHouseMenu;
+    CafeMenu cafeMenu;
 
-    public Waitress(DinerMenu dinerMenu, PancakeHouseMenu pancakeHouseMenu) {
+    public Waitress(DinerMenu dinerMenu, PancakeHouseMenu pancakeHouseMenu, CafeMenu cafeMenu) {
         this.dinerMenu = dinerMenu;
         this.pancakeHouseMenu = pancakeHouseMenu;
+        this.cafeMenu = cafeMenu;
     }
 
     public void printAllMenus() {
@@ -13,6 +15,9 @@ public class Waitress {
 
         System.out.println("\n=== OBJECTVILLE DINER (Lunch) ===");
         printMenu(dinerMenu.createIterator());
+
+        System.out.println("\n=== OBJECTVILLE CAFE ===");
+        printMenu(cafeMenu.createIterator());
     }
 
     public void printDinerMenu() {
@@ -25,13 +30,19 @@ public class Waitress {
         printMenu(pancakeHouseMenu.createIterator());
     }
 
-    public void printVegetarianMenu() {
-        System.out.println("\n=== VEGETARIAN ITEMS ===");
-        printVegetarian(pancakeHouseMenu.createIterator());
-        printVegetarian(dinerMenu.createIterator());
+    public void printCafeMenu() {
+        System.out.println("\n=== OBJECTVILLE CAFE ===");
+        printMenu(cafeMenu.createIterator());
     }
 
-    // ONE loop works for any menu thanks to Iterator
+    public void printVegetarianMenu() {
+        System.out.println("\n=== VEGETARIAN ITEMS (All Menus) ===");
+        printVegetarian(pancakeHouseMenu.createIterator());
+        printVegetarian(dinerMenu.createIterator());
+        printVegetarian(cafeMenu.createIterator());
+    }
+
+    // Same single method — works for Array, ArrayList, AND HashMap!
     private void printMenu(Iterator iterator) {
         while (iterator.hasNext()) {
             printMenuItem(iterator.next());
