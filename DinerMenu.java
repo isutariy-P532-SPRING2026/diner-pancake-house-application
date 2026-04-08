@@ -32,4 +32,8 @@ public class DinerMenu {
     public Iterator createIterator() {
         return new DinerMenuIterator(menuItems);
     }
+
+    public Iterator createAlternatingIterator(int dayOfWeek) {
+        return new AlternatingDinerMenuIterator(menuItems, dayOfWeek);
+    }
 }
