@@ -23,4 +23,8 @@ public class PancakeHouseMenu {
     public Iterator createIterator() {
         return new PancakeHouseMenuIterator(menuItems);
     }
+
+    public Iterator createAlternatingIterator(int dayOfWeek) {
+        return new AlternatingPancakeMenuIterator(menuItems, dayOfWeek);
+    }
 }

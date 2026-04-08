@@ -9,31 +9,43 @@ public class Waitress {
         this.cafeMenu = cafeMenu;
     }
 
+    public void printTodaysMenus(int dayOfWeek) {
+        System.out.println("\n=== PANCAKE HOUSE - Today's Breakfast ===");
+        printMenu(pancakeHouseMenu.createAlternatingIterator(dayOfWeek));
+
+        System.out.println("\n=== DINER - Today's Lunch ===");
+        printMenu(dinerMenu.createAlternatingIterator(dayOfWeek));
+
+        System.out.println("\n=== CAFE - Today's Items ===");
+        printMenu(cafeMenu.createAlternatingIterator(dayOfWeek));
+    }
+
+    public void printMenuForDay(int dayOfWeek) {
+        String dayName = DayChecker.getDayName(dayOfWeek);
+        System.out.println("\n=== PANCAKE HOUSE - " + dayName + "'s Breakfast ===");
+        printMenu(pancakeHouseMenu.createAlternatingIterator(dayOfWeek));
+
+        System.out.println("\n=== DINER - " + dayName + "'s Lunch ===");
+        printMenu(dinerMenu.createAlternatingIterator(dayOfWeek));
+
+        System.out.println("\n=== CAFE - " + dayName + "'s Items ===");
+        printMenu(cafeMenu.createAlternatingIterator(dayOfWeek));
+    }
+
     public void printAllMenus() {
-        System.out.println("\n=== OBJECTVILLE PANCAKE HOUSE (Breakfast) ===");
+        System.out.println("\n=== PANCAKE HOUSE (Full Menu) ===");
         printMenu(pancakeHouseMenu.createIterator());
 
-        System.out.println("\n=== OBJECTVILLE DINER (Lunch) ===");
+        System.out.println("\n=== DINER (Full Menu) ===");
         printMenu(dinerMenu.createIterator());
 
-        System.out.println("\n=== OBJECTVILLE CAFE ===");
+        System.out.println("\n=== CAFE (Full Menu) ===");
         printMenu(cafeMenu.createIterator());
     }
 
-    public void printDinerMenu() {
-        System.out.println("\n=== OBJECTVILLE DINER (Lunch) ===");
-        printMenu(dinerMenu.createIterator());
-    }
-
-    public void printPancakeMenu() {
-        System.out.println("\n=== OBJECTVILLE PANCAKE HOUSE (Breakfast) ===");
-        printMenu(pancakeHouseMenu.createIterator());
-    }
-
-    public void printCafeMenu() {
-        System.out.println("\n=== OBJECTVILLE CAFE ===");
-        printMenu(cafeMenu.createIterator());
-    }
+    public void printDinerMenu()              { System.out.println("\n=== DINER (Full Menu) ===");           printMenu(dinerMenu.createIterator()); }
+    public void printPancakeMenu()            { System.out.println("\n=== PANCAKE HOUSE (Full Menu) ===");   printMenu(pancakeHouseMenu.createIterator()); }
+    public void printCafeMenu()               { System.out.println("\n=== CAFE (Full Menu) ===");            printMenu(cafeMenu.createIterator()); }
 
     public void printVegetarianMenu() {
         System.out.println("\n=== VEGETARIAN ITEMS (All Menus) ===");
@@ -42,11 +54,8 @@ public class Waitress {
         printVegetarian(cafeMenu.createIterator());
     }
 
-    // Same single method — works for Array, ArrayList, AND HashMap!
     private void printMenu(Iterator iterator) {
-        while (iterator.hasNext()) {
-            printMenuItem(iterator.next());
-        }
+        while (iterator.hasNext()) printMenuItem(iterator.next());
     }
 
     private void printVegetarian(Iterator iterator) {
