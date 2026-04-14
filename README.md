@@ -36,16 +36,6 @@ automatically prints its desserts too, recursively.
         +-- Soup of the Day          (MenuItem/leaf)
         +-- Club Sandwich            (MenuItem/leaf)
 
-## New / Changed files
-
-- Menu.java           NEW - the Composite class (extends MenuComponent)
-- MenuTestDrive.java  UPDATED - builds the composite tree manually
-
-## Unchanged files
-
-- MenuComponent.java, MenuItem.java, DayChecker.java
-- All iterator classes, DinerMenu, PancakeHouseMenu, CafeMenu, Waitress
-
 ## How print() works recursively
 
   allMenus.print()
@@ -57,11 +47,17 @@ automatically prints its desserts too, recursively.
 ## Interactive Options
 
   1 - Full tree (all menus + dessert submenu)
+  
   2 - Diner menu (shows regular items + desserts)
+  
   3 - Pancake House menu
+  
   4 - Cafe menu
+  
   5 - Dessert menu only
+  
   6 - Pick a day for alternating menu
+  
   0 - Exit
 
 ## How to run
