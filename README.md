@@ -1,40 +1,68 @@
-# Part 6 - Composite Pattern: MenuComponent and MenuItem
+# Part 7 - Full Composite Pattern with Dessert Submenu
 
 ## What this does
+**
+Completes the Composite Pattern. DinerMenu now has a DessertMenu
+as a child — a menu inside a menu. Printing the DinerMenu
+automatically prints its desserts too, recursively.
 
-Introduces the first half of the Composite Pattern.
-MenuComponent is the abstract base class for both leaves (MenuItem)
-and composites (Menu - coming in Part 7).
+## The Composite Tree
+
+  ALL MENUS  (root)
+  |
+  +-- PANCAKE HOUSE  (Menu/composite)
+  |     +-- K&B's Pancake Breakfast  (MenuItem/leaf)
+  |     +-- Regular Pancake Breakfast(MenuItem/leaf)
+  |     +-- Blueberry Pancakes       (MenuItem/leaf)
+  |     +-- Waffles                  (MenuItem/leaf)
+  |
+  +-- DINER  (Menu/composite)
+  |     +-- Vegetarian BLT           (MenuItem/leaf)
+  |     +-- BLT                      (MenuItem/leaf)
+  |     +-- Soup of the Day          (MenuItem/leaf)
+  |     +-- Hot Dog                  (MenuItem/leaf)
+  |     +-- Steamed Veggies          (MenuItem/leaf)
+  |     +-- Pasta                    (MenuItem/leaf)
+  |     +-- DESSERT MENU             (Menu/composite) <-- child menu!
+  |           +-- Apple Pie          (MenuItem/leaf)
+  |           +-- Chocolate Cake     (MenuItem/leaf)
+  |           +-- Ice Cream          (MenuItem/leaf)
+  |           +-- Cheesecake         (MenuItem/leaf)
+  |
+  +-- CAFE  (Menu/composite)
+        +-- Burger                   (MenuItem/leaf)
+        +-- Veggie Burger            (MenuItem/leaf)
+        +-- Fries                    (MenuItem/leaf)
+        +-- Soup of the Day          (MenuItem/leaf)
+        +-- Club Sandwich            (MenuItem/leaf)
 
 ## New / Changed files
 
-- MenuComponent.java   NEW - abstract base class for the composite pattern
-- MenuItem.java        UPDATED - now extends MenuComponent
+- Menu.java           NEW - the Composite class (extends MenuComponent)
+- MenuTestDrive.java  UPDATED - builds the composite tree manually
 
 ## Unchanged files
 
-  Everything else stays exactly the same as Part 5.
-  MenuTestDrive.java is NOT changed.
+- MenuComponent.java, MenuItem.java, DayChecker.java
+- All iterator classes, DinerMenu, PancakeHouseMenu, CafeMenu, Waitress
 
-## How Composite Pattern works (so far)
+## How print() works recursively
 
-  MenuComponent  <-- abstract base (defines all possible operations)
-       |
-  MenuItem       <-- LEAF (overrides getName, getDescription,
-                           getPrice, isVegetarian, print)
-       |
-  Menu           <-- COMPOSITE (coming in Part 7, will override
-                           add, remove, getChild, print)
+  allMenus.print()
+    -> pancakeComposite.print()  prints its items
+    -> dinerComposite.print()    prints its items, then...
+         -> dessertMenu.print()  prints dessert items automatically
+    -> cafeComposite.print()     prints its items
 
-## Why UnsupportedOperationException?
+## Interactive Options
 
-MenuComponent provides default implementations that throw
-UnsupportedOperationException. This means:
-
-- MenuItem does not need to implement add/remove/getChild
-  (those don't make sense for a single item)
-- Menu (Part 7) will not need to implement getPrice/isVegetarian
-  (those don't make sense for a whole menu)
+  1 - Full tree (all menus + dessert submenu)
+  2 - Diner menu (shows regular items + desserts)
+  3 - Pancake House menu
+  4 - Cafe menu
+  5 - Dessert menu only
+  6 - Pick a day for alternating menu
+  0 - Exit
 
 ## How to run
 
