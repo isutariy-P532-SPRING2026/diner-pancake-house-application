@@ -1,7 +1,7 @@
 # Part 7 - Full Composite Pattern with Dessert Submenu
 
 ## What this does
-**
+
 Completes the Composite Pattern. DinerMenu now has a DessertMenu
 as a child — a menu inside a menu. Printing the DinerMenu
 automatically prints its desserts too, recursively.
