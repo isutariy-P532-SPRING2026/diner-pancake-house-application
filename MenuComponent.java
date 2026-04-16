@@ -1,6 +1,7 @@
+import java.util.Iterator;
+
 public abstract class MenuComponent {
 
-    // These are for composite (Menu) - tasks 6 and 7
     public void add(MenuComponent menuComponent) {
         throw new UnsupportedOperationException();
     }
@@ -13,7 +14,6 @@ public abstract class MenuComponent {
         throw new UnsupportedOperationException();
     }
 
-    // These are for leaf (MenuItem)
     public String getName() {
         throw new UnsupportedOperationException();
     }
@@ -30,7 +30,8 @@ public abstract class MenuComponent {
         throw new UnsupportedOperationException();
     }
 
-    // Both Menu and MenuItem will override this
+    public abstract Iterator<MenuComponent> createIterator();
+
     public void print() {
         throw new UnsupportedOperationException();
     }
