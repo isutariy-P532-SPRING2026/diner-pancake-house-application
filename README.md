@@ -1,34 +1,60 @@
-# Part 8 - Composite Pattern  (with DessertMenu as child of DinerMenu) vamd vegetarian of all
+# Part 8 - Composite Pattern  (with DessertMenu as child of DinerMenu) amd vegetarian of all
 
 ## The Tree Structure
 
   OBJECTVILLE RESTAURANTS  (root Menu)
   |
   |-- PANCAKE HOUSE MENU   (Menu)
+  
   |     |-- K&B's Pancake Breakfast   (MenuItem)
+  
   |     |-- Regular Pancake Breakfast (MenuItem)
+  
   |     |-- Blueberry Pancakes        (MenuItem)
+  
   |     |-- Waffles                   (MenuItem)
+  
   |
+  
   |-- DINER MENU           (Menu)
+  
   |     |-- Vegetarian BLT            (MenuItem)
+  
   |     |-- BLT                       (MenuItem)
+  
   |     |-- Soup of the Day           (MenuItem)
+  
   |     |-- Hot Dog                   (MenuItem)
+  
   |     |-- Steamed Veggies           (MenuItem)
+  
   |     |-- Pasta                     (MenuItem)
+  
   |     |-- DESSERT MENU              (Menu - child of Diner!)
+  
   |           |-- Apple Pie           (MenuItem)
+  
   |           |-- Chocolate Brownie   (MenuItem)
+  
   |           |-- Cheesecake          (MenuItem)
+  
   |           |-- Sorbet              (MenuItem)
+  
   |
+  
   |-- CAFE MENU            (Menu)
-        |-- Burger                    (MenuItem)
-        |-- Veggie Burger             (MenuItem)
-        |-- Fries                     (MenuItem)
-        |-- Soup of the Day           (MenuItem)
-        |-- Club Sandwich             (MenuItem)
+  
+  |      
+  
+  |     |-- Burger                    (MenuItem)
+  
+  |     |-- Veggie Burger             (MenuItem)
+  
+  |     |-- Fries                     (MenuItem)
+  
+  |     |-- Soup of the Day           (MenuItem)
+  
+  |     |-- Club Sandwich             (MenuItem)
 
 ## Vegetarian filter
 
