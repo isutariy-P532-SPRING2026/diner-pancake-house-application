@@ -1,30 +1,15 @@
-import java.util.ArrayList;
-
-public class PancakeHouseMenu {
-    ArrayList<MenuItem> menuItems;
+public class PancakeHouseMenu extends Menu {
 
     public PancakeHouseMenu() {
-        menuItems = new ArrayList<>();
-        addItem("K&B's Pancake Breakfast",
-                "Pancakes with scrambled eggs and toast", true, 2.99);
-        addItem("Regular Pancake Breakfast",
-                "Pancakes with fried eggs and sausage", false, 2.99);
-        addItem("Blueberry Pancakes",
-                "Pancakes made with fresh blueberries and blueberry syrup", true, 3.49);
-        addItem("Waffles",
-                "Waffles with your choice of blueberries or strawberries", true, 3.59);
-    }
+        super("PANCAKE HOUSE MENU", "Breakfast");
 
-    public void addItem(String name, String description,
-                        boolean vegetarian, double price) {
-        menuItems.add(new MenuItem(name, description, vegetarian, price));
-    }
-
-    public Iterator createIterator() {
-        return new PancakeHouseMenuIterator(menuItems);
-    }
-
-    public Iterator createAlternatingIterator(int dayOfWeek) {
-        return new AlternatingPancakeMenuIterator(menuItems, dayOfWeek);
+        add(new MenuItem("K&B's Pancake Breakfast",
+                "Pancakes with scrambled eggs and toast", true, 2.99));
+        add(new MenuItem("Regular Pancake Breakfast",
+                "Pancakes with fried eggs and sausage", false, 2.99));
+        add(new MenuItem("Blueberry Pancakes",
+                "Pancakes made with fresh blueberries and blueberry syrup", true, 3.49));
+        add(new MenuItem("Waffles",
+                "Waffles with your choice of blueberries or strawberries", true, 3.59));
     }
 }
