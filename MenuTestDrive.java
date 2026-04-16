@@ -4,10 +4,9 @@ public class MenuTestDrive {
 
     public static void main(String[] args) {
 
-        // Each menu builds itself - MenuTestDrive just wires the tree
         Menu allMenus = new Menu("OBJECTVILLE RESTAURANTS", "All our menus");
         allMenus.add(new PancakeHouseMenu());
-        allMenus.add(new DinerMenu());   // DinerMenu already contains DessertMenu
+        allMenus.add(new DinerMenu());
         allMenus.add(new CafeMenu());
 
         Waitress waitress = new Waitress(allMenus);
@@ -29,8 +28,8 @@ public class MenuTestDrive {
             String input = scanner.nextLine().trim();
 
             switch (input) {
-                case "1": waitress.printMenu();            break;
-                case "2": waitress.printVegetarianMenu();  break;
+                case "1": waitress.printMenu();           break;
+                case "2": waitress.printVegetarianMenu(); break;
                 case "0":
                     System.out.println("  Goodbye!");
                     running = false;

@@ -1,3 +1,5 @@
+import java.util.Iterator;
+
 public class Waitress {
     MenuComponent allMenus;
 
@@ -5,18 +7,21 @@ public class Waitress {
         this.allMenus = allMenus;
     }
 
-    // print() walks the whole tree automatically
     public void printMenu() {
         allMenus.print();
     }
 
-    // walks the whole tree printing only vegetarian items
     public void printVegetarianMenu() {
         System.out.println("\n==========================================");
         System.out.println("  VEGETARIAN ITEMS ACROSS ALL MENUS");
         System.out.println("==========================================");
-        if (allMenus instanceof Menu) {
-            ((Menu) allMenus).printVegetarian();
+
+        Iterator<MenuComponent> iterator = allMenus.createIterator();
+        while (iterator.hasNext()) {
+            MenuComponent component = iterator.next();
+            if (component instanceof MenuItem && component.isVegetarian()) {
+                component.print();
+            }
         }
     }
 }

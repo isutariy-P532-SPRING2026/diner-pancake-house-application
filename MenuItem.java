@@ -1,3 +1,5 @@
+import java.util.Iterator;
+
 public class MenuItem extends MenuComponent {
     String name;
     String description;
@@ -16,6 +18,11 @@ public class MenuItem extends MenuComponent {
     public String getDescription() { return description; }
     public double getPrice()       { return price; }
     public boolean isVegetarian()  { return vegetarian; }
+
+    @Override
+    public Iterator<MenuComponent> createIterator() {
+        return new NullIterator();
+    }
 
     public void print() {
         String veg = isVegetarian() ? "[V]" : "   ";
