@@ -1,67 +1,42 @@
-# Part 7 - Full Composite Pattern with Dessert Submenu
+# Part 8 - Composite Pattern  (with DessertMenu as child of DinerMenu) vamd vegetarian of all
 
-## What this does
+## The Tree Structure
 
-Completes the Composite Pattern. DinerMenu now has a DessertMenu
-as a child — a menu inside a menu. Printing the DinerMenu
-automatically prints its desserts too, recursively.
-
-## The Composite Tree
-
-  ALL MENUS  (root)
+  OBJECTVILLE RESTAURANTS  (root Menu)
   |
-  +-- PANCAKE HOUSE  (Menu/composite)
-  |     +-- K&B's Pancake Breakfast  (MenuItem/leaf)
-  |     +-- Regular Pancake Breakfast(MenuItem/leaf)
-  |     +-- Blueberry Pancakes       (MenuItem/leaf)
-  |     +-- Waffles                  (MenuItem/leaf)
+  |-- PANCAKE HOUSE MENU   (Menu)
+  |     |-- K&B's Pancake Breakfast   (MenuItem)
+  |     |-- Regular Pancake Breakfast (MenuItem)
+  |     |-- Blueberry Pancakes        (MenuItem)
+  |     |-- Waffles                   (MenuItem)
   |
-  +-- DINER  (Menu/composite)
-  |     +-- Vegetarian BLT           (MenuItem/leaf)
-  |     +-- BLT                      (MenuItem/leaf)
-  |     +-- Soup of the Day          (MenuItem/leaf)
-  |     +-- Hot Dog                  (MenuItem/leaf)
-  |     +-- Steamed Veggies          (MenuItem/leaf)
-  |     +-- Pasta                    (MenuItem/leaf)
-  |     +-- DESSERT MENU             (Menu/composite) <-- child menu!
-  |           +-- Apple Pie          (MenuItem/leaf)
-  |           +-- Chocolate Cake     (MenuItem/leaf)
-  |           +-- Ice Cream          (MenuItem/leaf)
-  |           +-- Cheesecake         (MenuItem/leaf)
+  |-- DINER MENU           (Menu)
+  |     |-- Vegetarian BLT            (MenuItem)
+  |     |-- BLT                       (MenuItem)
+  |     |-- Soup of the Day           (MenuItem)
+  |     |-- Hot Dog                   (MenuItem)
+  |     |-- Steamed Veggies           (MenuItem)
+  |     |-- Pasta                     (MenuItem)
+  |     |-- DESSERT MENU              (Menu - child of Diner!)
+  |           |-- Apple Pie           (MenuItem)
+  |           |-- Chocolate Brownie   (MenuItem)
+  |           |-- Cheesecake          (MenuItem)
+  |           |-- Sorbet              (MenuItem)
   |
-  +-- CAFE  (Menu/composite)
-        +-- Burger                   (MenuItem/leaf)
-        +-- Veggie Burger            (MenuItem/leaf)
-        +-- Fries                    (MenuItem/leaf)
-        +-- Soup of the Day          (MenuItem/leaf)
-        +-- Club Sandwich            (MenuItem/leaf)
+  |-- CAFE MENU            (Menu)
+        |-- Burger                    (MenuItem)
+        |-- Veggie Burger             (MenuItem)
+        |-- Fries                     (MenuItem)
+        |-- Soup of the Day           (MenuItem)
+        |-- Club Sandwich             (MenuItem)
 
-## How print() works recursively
+## Vegetarian filter
 
-  allMenus.print()
-    -> pancakeComposite.print()  prints its items
-    -> dinerComposite.print()    prints its items, then...
-         -> dessertMenu.print()  prints dessert items automatically
-    -> cafeComposite.print()     prints its items
-
-## Interactive Options
-
-  1 - Full tree (all menus + dessert submenu)
-  
-  2 - Diner menu (shows regular items + desserts)
-  
-  3 - Pancake House menu
-  
-  4 - Cafe menu
-  
-  5 - Dessert menu only
-  
-  6 - Pick a day for alternating menu
-  
-  0 - Exit
+  When user selects option 2, the app walks the entire tree and prints
+  only items where isVegetarian() returns true, including desserts.
 
 ## How to run
 
   javac *.java
-
+  
   java MenuTestDrive

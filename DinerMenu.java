@@ -1,39 +1,22 @@
-public class DinerMenu {
-    static final int MAX_ITEMS = 6;
-    int numberOfItems = 0;
-    MenuItem[] menuItems;
+public class DinerMenu extends Menu {
 
     public DinerMenu() {
-        menuItems = new MenuItem[MAX_ITEMS];
-        addItem("Vegetarian BLT",
-                "(Fakin') Bacon with lettuce & tomato on whole wheat", true, 2.99);
-        addItem("BLT",
-                "Bacon with lettuce & tomato on whole wheat", false, 2.99);
-        addItem("Soup of the Day",
-                "A bowl of the soup of the day with a side of potato salad", false, 3.29);
-        addItem("Hot Dog",
-                "A hot dog with sauerkraut, relish, onions, topped with cheese", false, 3.05);
-        addItem("Steamed Veggies and Brown Rice",
-                "A medley of steamed vegetables over brown rice", true, 3.99);
-        addItem("Pasta",
-                "Spaghetti with marinara sauce and a slice of sourdough bread", true, 3.89);
-    }
+        super("DINER MENU", "Lunch");
 
-    public void addItem(String name, String description,
-                        boolean vegetarian, double price) {
-        if (numberOfItems >= MAX_ITEMS) {
-            System.out.println("Sorry, menu is full!");
-        } else {
-            menuItems[numberOfItems] = new MenuItem(name, description, vegetarian, price);
-            numberOfItems++;
-        }
-    }
+        add(new MenuItem("Vegetarian BLT",
+                "(Fakin') Bacon with lettuce & tomato on whole wheat", true, 2.99));
+        add(new MenuItem("BLT",
+                "Bacon with lettuce & tomato on whole wheat", false, 2.99));
+        add(new MenuItem("Soup of the Day",
+                "A bowl of the soup of the day with a side of potato salad", false, 3.29));
+        add(new MenuItem("Hot Dog",
+                "A hot dog with sauerkraut, relish, onions, topped with cheese", false, 3.05));
+        add(new MenuItem("Steamed Veggies and Brown Rice",
+                "A medley of steamed vegetables over brown rice", true, 3.99));
+        add(new MenuItem("Pasta",
+                "Spaghetti with marinara sauce and a slice of sourdough bread", true, 3.89));
 
-    public Iterator createIterator() {
-        return new DinerMenuIterator(menuItems);
-    }
-
-    public Iterator createAlternatingIterator(int dayOfWeek) {
-        return new AlternatingDinerMenuIterator(menuItems, dayOfWeek);
+        // DessertMenu is a child of DinerMenu
+        add(new DessertMenu());
     }
 }
